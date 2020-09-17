@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     passwords: 'admins/passwords',
     sessions: 'admins/sessions'}
 
-    namespace :admin do
+    namespace :admins do
       get 'homes/top'
 
       resources :items, only: [:index, :new, :create, :show, :edit, :update]
