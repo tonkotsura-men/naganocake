@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     registrations: 'publics/registrations',
     passwords: 'publics/passwords',
     sessions: 'publics/sessions'}
+    #新規登録後商品一覧ページへ遷移
+    root 'publics/items#index'
 
     scope module: :publics do
       get 'top' => 'homes#top'
@@ -32,7 +34,7 @@ Rails.application.routes.draw do
     passwords: 'admins/passwords',
     sessions: 'admins/sessions'}
 
-    namespace :admin do
+    namespace :admins do
       get 'homes/top'
 
       resources :items, only: [:index, :new, :create, :show, :edit, :update]
