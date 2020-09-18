@@ -18,6 +18,12 @@ class Publics::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  protected
+
+  def after_sign_out_path_for(resource)
+    top_path
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
