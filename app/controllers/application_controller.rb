@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
   #Bootstrapのflashメッセージ機能追記
@@ -30,3 +30,4 @@ class ApplicationController < ActionController::Base
   	end
 
 	end
+
