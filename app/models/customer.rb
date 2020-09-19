@@ -4,10 +4,11 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
 
+  has_many :cart_items, dependent: :destroy
+  has_many :items, through: :cart_items
 
-  has_many :curt_items, dependent: :destroy
-
-
+  has_many :orders
+  has_many :addresses
 
   validates :first_name, :last_name, :first_name_kana, :last_name_kana,
             :address, :telephone_number,
@@ -16,4 +17,5 @@ class Customer < ApplicationRecord
   validates :telephone_number, numericality: { only_integer: true }
   validates :first_name_kana, :last_name_kana,
       format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: "カタカナで入力して下さい。"}
+
 end

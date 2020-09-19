@@ -4,8 +4,6 @@ Rails.application.routes.draw do
     registrations: 'publics/registrations',
     passwords: 'publics/passwords',
     sessions: 'publics/sessions'}
-    #新規登録後商品一覧ページへ遷移
-    root 'publics/items#index'
 
     scope module: :publics do
       get 'top' => 'homes#top'
@@ -14,7 +12,9 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show]
 
       get 'customers/my_page' => 'customers#show', as: 'customers'
-      resource :customers, only: [:edit, :update]
+      get 'customers/edit_page' => 'customers#edit', as: 'edit_customers'
+      patch 'customers/edit_page/:id' => 'customers#update', as: 'update_customers'
+      # resource :customers, only: [:update]
       get 'customers/unsubscribe'
       patch 'customers/withdraw'
 
