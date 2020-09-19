@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-11">
+      <h2 class="head-line"><span style="background-color:#C0C0C0">会員の方はこちらからログイン</span></h2>
+      
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field form-group col-sm-8">
+          <%= f.label :メールアドレス, class: "col-sm-4" %>
+          <%= f.email_field :email, autofocus: true, class: "col-sm-8" %>
+        </div>
+        <div class="field form-group col-sm-8">
+          <%= f.label :パスワード, class: "col-sm-4" %>
+          <%= f.password_field :password, class: "col-sm-8" %>
+        </div>
+        
+        <div class="field col-sm-6 pull-right">
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name), class: "btn-link" %>
+          <% end %>
+        </div>
+
+        <div class="field col-sm-9 pull-right">
+          <%= f.submit "ログイン", class: 'btn btn-primary btn-md col-xs-3' %>
+        </div>  
+
+      <% end %>
+      <%= render "publics/shared/links" %>
+    </div>
+  </div>
+</div>
+

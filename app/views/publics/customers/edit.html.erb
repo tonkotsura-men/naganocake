@@ -1,0 +1,86 @@
+<script src="https://kit.fontawesome.com/da6e295665.js" crossorigin="anonymous"></script>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-2">
+      <h2>登録情報編集</h2>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class="col-xs-10 col-xs-offset-2">
+      <%= form_with(model: @customer, url:update_customers_path(@customer), local: true, method: :patch) do |f| %>
+      <div class='form-group row'>
+        <div class='col-xs-2'>
+          <h4><%= f.label :名前 %></h4>
+        </div>
+        <div class='col-xs-8 col-xs-offset-1'>
+          <span style='display: inline-block;'>
+            (姓)<%= f.text_field :last_name, class: 'form-control' %>
+          </span>
+          <span style='display: inline-block;'>
+            (名)<%= f.text_field :first_name, class: 'form-control' %>
+          </span>
+        </div>
+      </div>
+
+      <div class='form-group row'>
+        <div class='col-xs-2'>
+          <h4><%= f.label :フリガナ %></h4>
+        </div>
+        <div class='col-xs-8 col-xs-offset-1'>
+          <span style='display: inline-block;'>
+            (セイ)<%= f.text_field :last_name_kana, class: 'form-control' %>
+          </span>
+          <span style='display: inline-block;'>
+            (メイ)<%= f.text_field :first_name_kana, class: 'form-control' %>
+          </span>
+        </div>
+      </div>
+
+      <div class='form-group row'>
+        <div class='col-xs-2'>
+          <h4><%= f.label :Eメール %></h4>
+        </div>
+        <div class='col-xs-4 col-xs-offset-1'>
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class='form-group row'>
+        <div class='col-xs-3'>
+          <h4><%= f.label :郵便番号（ハイフンなし） %></h4>
+        </div>
+        <div class='col-xs-4'>
+          <%= f.text_field :postal_code, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class='form-group row'>
+        <div class='col-xs-3'>
+          <h4><%= f.label :住所 %></h4>
+        </div>
+        <div class='col-xs-4'>
+          <%= f.text_field :address, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class='form-group row'>
+        <div class='col-xs-3'>
+          <h4><%= f.label :電話番号（ハイフンなし） %></h4>
+        </div>
+        <div class='col-xs-4'>
+          <%= f.text_field :telephone_number, class: 'form-control' %>
+        </div>
+      </div>
+
+    <div class="action space-sm row">
+      <div class="col-lg-2 offset-lg-8">
+        <%= f.submit '編集内容を保存する', class:'btn btn-success' %>
+      </div>
+      <div class="col-lg-2">
+        <%= link_to '退会する', customers_unsubscribe_path, class: 'glyphicon glyphicon-remove btn btn-danger'  %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+

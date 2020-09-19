@@ -1,0 +1,49 @@
+<script src="https://kit.fontawesome.com/da6e295665.js" crossorigin="anonymous"></script>
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-2">
+	  	<h2>商品詳細</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-3 col-xs-offset-2">
+	  	<%= attachment_image_tag(@item, :image, size: "320x240", fallback: "no_image.jpg") %>
+		</div>
+
+		<div class="col-xs-5">
+	  	<table class="table">
+	  		<tr>
+	  			<th>商品名</th>
+	  			<th><%= @item.name %></th>
+	  		</tr>
+	  		<tr>
+	  			<th>商品説明</th>
+	  			<th><%= @item.introduction %></th>
+	  		</tr>
+	  		<tr>
+	  			<th>ジャンル</th>
+	  			<th><%= @item.genre.name %></th>
+	  		</tr>
+	  		<tr>
+	  			<!-- 後程税込み価格修正 -->
+	  			<th>税込価格 (税抜価格)</th>
+	  			<th><%= @item.price.to_s(:delimited) %> 円 (<%= @item.price.to_s(:delimited) %> 円)</th>
+	  		</tr>
+	  		<tr>
+	  			<th>販売ステータス</th>
+	  			<th>
+	  				<% if @item.is_active == true %>
+	  					<i class="fas fa-bullseye"></i>販売中
+						<% else %>
+							<i class="fas fa-ban"></i>販売停止中
+						<% end %>
+					</th>
+	  		</tr>
+	  	</table>
+	  	<div class="actions">
+	  		<%= link_to "編集する", edit_admins_item_path(@item), data: {"turbolinks" => false}, class: "glyphicon glyphicon-pencil btn btn-primary pull-right" %>
+	  		<%= link_to "戻る", admins_items_path, class: "glyphicon glyphicon-home btn btn-info" %>
+  		</div>
+		</div>
+	</div>
+

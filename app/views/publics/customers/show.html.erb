@@ -1,0 +1,53 @@
+<script src="https://kit.fontawesome.com/da6e295665.js" crossorigin="anonymous"></script>
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-2">
+      <h2>マイページ</h2>
+    </div>
+  </div>
+  
+  <div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+		<h3><strong class="information-link"><i class="far fa-user"></i>登録情報</strong>
+			<%= link_to " 編集する", edit_customers_path, class: "glyphicon glyphicon-wrench btn btn-success col-xs-offset-1" %>
+			<%= link_to " パスワードを変更する", edit_customer_registration_path, class: "glyphicon glyphicon-cog btn btn-warning pull-right" %>
+		</h3>
+
+			<table class="table table-bordered table-condensed" >
+				<tbody>
+					<tr>
+						<td class="info col-xs-3"><strong>氏名</strong></td>
+						<td class="text-left"><%= @customer.last_name %> <%= @customer.first_name %></td>
+					</tr>
+					<tr>
+						<td class="info"><strong>カナ</strong></td>
+						<td class="text-left"><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+					</tr>
+					<tr>
+						<td class="info"><strong>郵便番号</strong></td>
+						<td class="text-left"><%= @customer.postal_code %></td>
+					</tr>
+					<tr>
+						<td class="info"><strong>住所</strong></td>
+						<td class="text-left"><%= @customer.address %></td>
+					</tr>
+					<tr>
+						<td class="info"><strong>電話番号</strong></td>
+						<td class="text-left"><%= @customer.telephone_number %></td>
+					</tr>
+					<tr>
+						<td class="info"><strong>メールアドレス</strong></td>
+						<td class="text-left"><%= @customer.email %></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="mypage-bottoms">
+				<h4><strong class="shipping-link">配送先　</strong>
+					<%= link_to " 一覧を見る", addresses_path, data: {"turbolinks" => false}, class: "glyphicon glyphicon-folder-open btn btn-info col-xs-offset-2" %>
+				</h4>
+				<h4><strong class="order-link">注文履歴</strong>
+					<%= link_to " 一覧を見る", orders_path, class: "glyphicon glyphicon-folder-open btn btn-info col-xs-offset-2" %>
+				</h4>
+			</div>
+	</div>
+</div>
