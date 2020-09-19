@@ -12,10 +12,6 @@
 *= require_tree .
  *= require_self
 */
-@import "bootstrap-sprockets";  
-@import "bootstrap";      
-
-* {
-  width: 1250px;
-}
+@import "bootstrap-sprockets";
+@import "bootstrap";
 

@@ -14,7 +14,6 @@ class Publics::CustomersController < ApplicationController
   end
 
   def update
-    @customer = current_customer
     if @customer.update(customer_params)
       redirect_to customers_path, success: 'お客様情報が更新されました！'
     else
@@ -25,7 +24,7 @@ class Publics::CustomersController < ApplicationController
 
   def withdraw
     @customer = current_customer
-    @customer.update(is_deleted: false)
+    @customer.update(is_deleted: true)
     reset_session
     redirect_to top_path, info: 'ありがとうございました。またのご利用を心よりお待ちしております。'
   end
@@ -33,7 +32,7 @@ class Publics::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:is_deleted, :first_name, :first_name_kana, :last_name, :last_name_kana, :postal_code, :address, :email, :telephone_number, cart_items_attributes: [:_destroy])
+    params.require(:customer).permit(:first_name, :first_name_kana, :last_name, :last_name_kana, :postal_code, :address, :email, :telephone_number)
   end
 
   def set_customer

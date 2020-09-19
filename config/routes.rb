@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
       get 'customers/my_page' => 'customers#show', as: 'customers'
       get 'customers/edit_page' => 'customers#edit', as: 'edit_customers'
-      resource :customers, only: [:update]
+      patch 'customers/edit_page/:id' => 'customers#update', as: 'update_customers'
+      # resource :customers, only: [:update]
       get 'customers/unsubscribe'
       patch 'customers/withdraw'
 

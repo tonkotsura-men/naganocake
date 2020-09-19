@@ -1,6 +1,20 @@
 # frozen_string_literal: true
 
 class Publics::SessionsController < Devise::SessionsController
+
+  before_action :reject_customer, only: [:create]
+
+  protected
+
+  def reject_customer
+    @customer = Customer.find_by(email: params[:customer][:email].downcase)
+    if @customer
+      if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
+        flash[:alert] = "このアカウントは退会済みです。"
+        redirect_to new_customer_session_path
+      end
+    end
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -19,12 +33,10 @@ class Publics::SessionsController < Devise::SessionsController
   # end
 
   protected
-
-  def after_sign_out_path_for(resource)
-    top_path
+  # ログイン時の遷移先
+  def after_sign_in_path_for(resource)
+      items_path
   end
-
-  # protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

@@ -7,7 +7,7 @@
 
   <div class='row'>
     <div class="col-xs-10 col-xs-offset-2">
-      <%= form_with(model: @customer, url:customers_path, local: true, method: :get) do |f| %>
+      <%= form_with(model: @customer, url:update_customers_path(@customer), local: true, method: :patch) do |f| %>
       <div class='form-group row'>
         <div class='col-xs-2'>
           <h4><%= f.label :名前 %></h4>

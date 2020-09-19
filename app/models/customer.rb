@@ -4,19 +4,18 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
 
-  has_many :cart_items
+  has_many :cart_items, dependent: :destroy
   has_many :items, through: :cart_items
 
   has_many :orders
   has_many :addresses
 
-  validates :email, length: {minimum: 3, maximum: 80}
-  validates :last_name, length: {minimum: 1, maximum: 15}
-  validates :last_name_kana, length: {minimum: 1, maximum: 20}
-  validates :first_name, length: {minimum: 1, maximum: 15}
-  validates :first_name_kana, length: {minimum: 2, maximum: 20}
-  validates :postal_code, length: {minimum: 3, maximum: 10}
-  validates :address, length: {minimum: 3, maximum: 50}
-  validates :telephone_number, length: {minimum: 3, maximum: 15}
+  validates :first_name, :last_name, :first_name_kana, :last_name_kana,
+            :address, :telephone_number,
+            presence: true
+  validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
+  validates :telephone_number, numericality: { only_integer: true }
+  validates :first_name_kana, :last_name_kana,
+      format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: "カタカナで入力して下さい。"}
 
 end

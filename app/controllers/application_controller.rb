@@ -6,16 +6,8 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :danger, :info
 
 	protected
-    # ログイン時のパスを変更してる
-    def after_sign_in_path_for(resource)
-      if customer_signed_in?
-        items_path
-      else
-        admins_items_path
-      end
-    end
 
-    #ログアウト時のパスの変更
+    # ログアウト時のパスの変更
     def after_sign_out_path_for(resource)
       root_path
     end
