@@ -67,8 +67,8 @@ class Publics::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
     OrderDetail.create(
-      item_id:  cart_item.item_id,
-      order_id:    @order.id,
+      item_id: cart_item.item_id,
+      order_id: @order.id,
       amount: cart_item.amount,
       price: tax_price(cart_item.item.price)
     )
