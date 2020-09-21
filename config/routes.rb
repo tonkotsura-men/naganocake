@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'publics/homes#top'
 #顧客サイト
   devise_for :customers, controllers: {
     registrations: 'publics/registrations',
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
     scope module: :publics do
       get 'top' => 'homes#top'
       get 'about' => 'homes#about'
+      root 'homes#top'
+      
 
       resources :items, only: [:index, :show]
 
@@ -22,7 +25,7 @@ Rails.application.routes.draw do
       delete :cart_items, to: 'cart_items#destroy_all'
 
       resources :orders, only: [:new, :create, :index, :show]
-      post 'orders/comfirm'
+      post 'orders/confirm'
       get 'orders/complete'
 
       resources :addresses, only: [:index, :edit, :create, :update, :destroy]

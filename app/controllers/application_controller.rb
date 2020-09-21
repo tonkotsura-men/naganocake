@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
   
 	before_action :configure_permitted_parameters, if: :devise_controller?
-
+  # before_action :withdraw_customer, only: [:create]
   #Bootstrapのflashメッセージ機能追記
   add_flash_types :success, :danger, :info
 
 	protected
+   
 
     # ログアウト時のパスの変更
     def after_sign_out_path_for(resource)
@@ -21,9 +22,12 @@ class ApplicationController < ActionController::Base
 
     end
 
-  	private
-
-  	# before_action作成
+  	# def withdraw_customer
+   #    if current_customer.is_deleted == true
+   #      flash[:alert] = "このアカウントは退会済みです。"
+   #      redirect_to new_customer_session_path
+   #    end  
+   #  end  
 
   	def set_item
     	@item = Item.find(params[:id])

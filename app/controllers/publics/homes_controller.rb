@@ -3,5 +3,6 @@ class Publics::HomesController < ApplicationController
   end
 
   def top
+  	@items = Item.all.sample(4)
   end
 end
