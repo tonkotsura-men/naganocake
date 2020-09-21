@@ -1,11 +1,12 @@
 class Publics::CartItemsController < ApplicationController
+  include ApplicationHelper
 
   before_action :authenticate_customer!
   before_action :set_cart_item, only: [:update, :destroy, :edit]
   before_action :set_customer
 
   def index
-    @cart_items = @customer.cart_items.all
+    @cart_items = @customer.cart_items
   end
 
   def update
@@ -29,21 +30,21 @@ class Publics::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = current_customer.cart_items.build(cart_item_params)
-    @current_item = CartItem.find_by(item_id: @cart_item.item_id,customer_id: @cart_item.customer_id)
+    @cart_item = current_customer.cart_items.new(cart_item_params)
+    item = Item.find(params[:cart_item][:item_id])
     # カートに同じ商品がなければ新規追加、あれば既存のデータと合算
-    if @current_item.nil?
+    unless item.posted_by?(current_customer)
       if @cart_item.save
         flash[:success] = 'カートに商品が追加されました！'
         redirect_to cart_items_path
       else
-        @carts_items = @customer.cart_items.all
+        @cart_items = @customer.cart_items.all
         render 'index'
         flash[:danger] = 'カートに商品を追加できませんでした。'
       end
     else
-      @current_item.amount += params[:amount].to_i
-      @current_item.update(cart_item_params)
+      @current_item = CartItem.find_by(item_id: params[:cart_item][:item_id], customer_id: current_customer.id)
+      @current_item.update(amount: @current_item.amount+@cart_item.amount)
       redirect_to cart_items_path
     end
   end
@@ -60,7 +61,7 @@ class Publics::CartItemsController < ApplicationController
   end
 
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :customer_id, :amount)
+    params.require(:cart_item).permit(:item_id, :amount)
   end
 
 end
