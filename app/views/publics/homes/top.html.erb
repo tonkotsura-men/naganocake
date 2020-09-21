@@ -1,4 +1,27 @@
 <div class="col-xs-12">
+	<div class="col-xs-2 col-xs-offset-1">
+    <table class='table table-hover table-bordered'>
+      <thead>
+        <tr>
+          <th><i class="fas fa-search"></i>ジャンル検索</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @genres.each do |genre| %>
+          <% if genre.is_active == true %>
+          <tr>
+            <td>
+              <!-- 一旦遷移先をジャンル編集画面に。後程修正 -->
+              <%= link_to edit_admins_genre_path(genre), method: :get do %>
+                <%= genre.name %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <div class="col-xs-8 col-xs-offset-4">
 	<div class="welcome">
 		
