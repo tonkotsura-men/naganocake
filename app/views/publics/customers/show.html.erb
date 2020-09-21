@@ -1,15 +1,15 @@
 <script src="https://kit.fontawesome.com/da6e295665.js" crossorigin="anonymous"></script>
 	<div class="row">
-		<div class="col-xs-10 col-xs-offset-2">
+		<div class="col-xs-10">
       <h2>マイページ</h2>
     </div>
   </div>
   
   <div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
+		<div class="col-xs-8 col-xs-offset-1">
 		<h3><strong class="information-link"><i class="far fa-user"></i>登録情報</strong>
 			<%= link_to " 編集する", edit_customers_path, class: "glyphicon glyphicon-wrench btn btn-success col-xs-offset-1" %>
-			<%= link_to " パスワードを変更する", edit_customer_registration_path, class: "glyphicon glyphicon-cog btn btn-warning pull-right" %>
+			<%= link_to " パスワードを変更する", edit_customer_password_path, class: "glyphicon glyphicon-cog btn btn-warning pull-right" %>
 		</h3>
 
 			<table class="table table-bordered table-condensed" >
