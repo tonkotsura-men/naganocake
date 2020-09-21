@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'publics/homes#top'
 #顧客サイト
   devise_for :customers, controllers: {
     registrations: 'publics/registrations',
