@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     scope module: :publics do
       get 'top' => 'homes#top'
       get 'about' => 'homes#about'
+      root 'homes#top'
+      
 
       resources :items, only: [:index, :show]
 
