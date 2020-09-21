@@ -7,4 +7,11 @@ module ApplicationHelper
       when 'info' then 'alert-info'
     end
   end
+
+  # 小数点切り捨てはfloor,３桁区切りはto_s(:delimited)
+  # 税込の計算
+  def tax_price(price)
+    (price * 1.1).floor
+  end
+
 end

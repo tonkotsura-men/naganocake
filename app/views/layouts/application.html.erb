@@ -13,82 +13,83 @@
 
   <body>
     <nav class="navbar navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">ながのCake</a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbarEexample1">
-      <% if customer_signed_in? %>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="">
-              <%= link_to 'マイページ', customers_path, class:"btn btn-light" %>
-            </li>
-            <li class="">
-              <%= link_to '商品一覧', items_path, class:"btn btn-light" %>
-            </li>
-            <li class="">
-              <%= link_to 'カート', cart_items_path, class:"btn btn-light" %>
-            </li>
-            <li class="">
-              <%= link_to 'ログアウト', destroy_customer_session_path, class:"btn btn-light" %>
-            </li>
-          </ul>
-          <p class="navbar-text">ようこそ <%= "#{current_customer.last_name}#{current_customer.first_name}" %> さん。</p>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">ながのCake</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarEexample1">
+          <% if customer_signed_in? %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <%= link_to 'マイページ', customers_path, class:"btn btn-light" %>
+              </li>
+              <li class="">
+                <%= link_to '商品一覧', items_path, class:"btn btn-light" %>
+              </li>
+              <li class="">
+                <%= link_to 'カート', cart_items_path, class:"btn btn-light" %>
+              </li>
+              <li class="">
+                <%= link_to 'ログアウト', destroy_customer_session_path, class:"btn btn-light" %>
+              </li>
+            </ul>
+            <p class="navbar-text">ようこそ <%= "#{current_customer.last_name}#{current_customer.first_name}" %> さん。</p>
           <% elsif admin_signed_in? %>
-          <ul class="nav navbar-nav navbar-right">
-          <li class="">
-              <%= link_to '商品一覧', admins_items_path, class:"btn btn-light" %>
-            </li>
-              <%= link_to '会員一覧', admins_customers_path ,class:"btn btn-light" %>
-            </li>
-            <li class="">
-              <%= link_to '注文履歴一覧', admins_orders_path, class:"btn btn-light" %>
-            </li>
-            <li class="">
-              <%= link_to 'ジャンル一覧', admins_genres_path, class:"btn btn-light" %>
-            </li>
-            <li class="">
-              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-light" %>
-            </li>
-            <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <%= link_to '商品一覧', admins_items_path, class:"btn btn-light" %>
+              </li>
+                <%= link_to '会員一覧', admins_customers_path ,class:"btn btn-light" %>
+              <li class="">
+                <%= link_to '注文履歴一覧', admins_orders_path, class:"btn btn-light" %>
+              </li>
+              <li class="">
+                <%= link_to 'ジャンル一覧', admins_genres_path, class:"btn btn-light" %>
+              </li>
+              <li class="">
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-light" %>
+              </li>
+            </ul>
+
+              <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+
           <% else %>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="">
-              <%= link_to 'About', about_path, class:"btn btn-light" %>
-            </li>
-            <li class="">
-              <%= link_to '商品一覧', items_path, class:"btn btn-light" %>
-            </li>
-            <li class="">
-              <%= link_to '新規登録', new_customer_registration_path, class:"btn btn-light" %>
-            </li>
-            <li class="">
-              <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-light" %>
-            </li>
-          </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <%= link_to 'About', about_path, class:"btn btn-light" %>
+              </li>
+              <li class="">
+                <%= link_to '商品一覧', items_path, class:"btn btn-light" %>
+              </li>
+              <li class="">
+                <%= link_to '新規登録', new_customer_registration_path, class:"btn btn-light" %>
+              </li>
+              <li class="">
+                <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-light" %>
+              </li>
+            </ul>
           <% end %>
-    </div>
-  </div>
-</nav>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="container">
-      <div class="row">
-        <%= yield %>
+        </div>
       </div>
+    </nav>
+    <div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+      <%= yield %>
     </div>
-  </body>
+</body>
   <footer class=”footer”>© ながのcake</footer>
 </html>

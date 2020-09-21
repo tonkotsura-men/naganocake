@@ -22,7 +22,7 @@ class Admins::SessionsController < Devise::SessionsController
   protected
   # ログイン時の遷移先
   def after_sign_in_path_for(resource)
-      admins_homes_top_path
+      admins_top_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.
