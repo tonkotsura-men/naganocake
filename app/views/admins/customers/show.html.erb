@@ -1,2 +1,68 @@
-<h1>Admins::Customers#show</h1>
-<p>Find me in app/views/admins/customers/show.html.erb</p>
+<div class="row">
+  <div class="col-xs-7 col-xs-offset-2">
+    <h2 class="head-line"><span style="background-color:#C0C0C0"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</span></h2>  
+
+    <div class="field col-sm-12">
+      <p>
+        <i class="col-sm-2">顧客ID</i>　　　
+        <%= @customer.id %>
+        <% if @customer.is_valid == true %>
+          <i class="status">有効会員</i>
+        <% else %>
+          <i class="status">退会済</i>
+        <% end %>  
+      </p>   
+    </div>
+
+    <div class="field col-sm-12">
+      <p>
+        <i class="col-sm-3">氏名</i>
+        <%= @customer.last_name %>
+        <%= @customer.first_name %>
+      </p>  
+    </div>
+
+    <div class="field col-sm-12">
+      <p>
+        <i class="col-sm-3">フリガナ</i>
+        <%= @customer.last_name_kana %>
+        <%= @customer.first_name_kana %>
+      </p>
+    </div>
+
+    <div class="field col-sm-12">
+      <p>
+        <i class="col-sm-3">郵便番号</i>
+        <%= @customer.postal_code %>
+      </p>
+    </div>
+
+    <div class="field col-sm-12">
+      <p>
+        <i class="col-sm-3">住所</i>
+        <%= @customer.address %>
+      </p>
+    </div>
+
+    <div class="field col-sm-12">
+      <p>
+        <i class="col-sm-3">電話番号</i>
+        <%= @customer.telephone_number %>
+      </p>
+    </div>
+
+    <div class="field col-sm-12">
+      <p>
+        <i class="col-sm-3">メールアドレス</i>
+        <%= @customer.email %>
+      </p>
+    </div>
+
+    <div class="field col-sm-12">
+        <%= link_to "編集する", edit_admins_customer_path(@customer), class: 'btn btn-primary btn-sm col-sm-2' %>
+        <%= link_to "注文履歴一覧を見る", admins_orders_path(@customer),class: 'btn btn-primary btn-sm col-sm-3' %> 
+    </div>  
+  </div>
+</div> 
+
+
