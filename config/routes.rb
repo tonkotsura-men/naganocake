@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'publics/homes#top'
 #顧客サイト
   devise_for :customers, controllers: {
     registrations: 'publics/registrations',
@@ -12,7 +13,9 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show]
 
       get 'customers/my_page' => 'customers#show', as: 'customers'
-      resource :customers, only: [:edit, :update]
+      get 'customers/edit_page' => 'customers#edit', as: 'edit_customers'
+      patch 'customers/edit_page/:id' => 'customers#update', as: 'update_customers'
+      # resource :customers, only: [:update]
       get 'customers/unsubscribe'
       patch 'customers/withdraw'
 
@@ -33,7 +36,9 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'}
 
     namespace :admins do
+
       get 'top' => 'homes#top'
+
 
       resources :items, only: [:index, :new, :create, :show, :edit, :update]
 

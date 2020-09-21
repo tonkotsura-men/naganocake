@@ -1,2 +1,60 @@
-<h1>Publics::Items#index</h1>
-<p>Find me in app/views/publics/items/index.html.erb</p>
+<script src="https://kit.fontawesome.com/da6e295665.js" crossorigin="anonymous"></script>
+<div class='row'>
+
+  <div class="col-xs-2 col-xs-offset-1">
+    <table class='table table-hover table-bordered'>
+      <thead>
+        <tr>
+          <th><i class="fas fa-search"></i>ジャンル検索</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @genres.each do |genre| %>
+          <% if genre.is_active == true %>
+          <tr>
+            <td>
+              <!-- 一旦遷移先をジャンル編集画面に。後程修正 -->
+              <%= link_to edit_admins_genre_path(genre), method: :get do %>
+                <%= genre.name %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-xs-9">
+    <h2>
+      <span style="display: inline-block;">商品一覧</span>
+      <span style="display: inline-block;">（全<%= @items.count %>件）</span>
+    </h2>
+    <% @items.each do |item| %>
+      <% if item.genre.is_active == true %>
+        <div class="col-xs-4 item-box space">
+          <%= link_to item_path(item.id) do %>
+
+            <div class="row">
+              <%= attachment_image_tag(item, :image, size: "180x130", fallback: 'no_image.jpg') %>
+            </div>
+
+            <div class="row">
+              <h4><%= item.name %></h4>
+            </div>
+
+            <div class="row">
+              <% if item.is_active == true %>
+              <!-- 後程税込み価格に変更 -->
+                <h4>￥<%= item.price.to_s(:delimited) %></h4>
+              <% else %>
+                <h4>売り切れ中</h4>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+    <%= paginate @items %>
+  </div>
+</div>

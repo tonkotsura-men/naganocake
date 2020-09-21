@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Naganocake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -43,6 +45,7 @@
           <li class="">
               <%= link_to '商品一覧', admins_items_path, class:"btn btn-light" %>
             </li>
+            <li>
               <%= link_to '会員一覧', admins_customers_path ,class:"btn btn-light" %>
             </li>
             <li class="">
