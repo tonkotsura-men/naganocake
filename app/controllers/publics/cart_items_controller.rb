@@ -10,16 +10,20 @@ class Publics::CartItemsController < ApplicationController
   end
 
   def update
-    if @cart_item.update(cart_item_params)
-      redirect_to cart_items_path
-      flash[:success] = 'カート内の商品を更新しました！'
-    end
+    @cart_item.update(amount: params[:cart_item][:amount].to_i)
+    flash.now[:success] = "#{@cart_item.item.name}の数量を変更しました"
+    @price = sub_price(@cart_item).to_s(:delimited)
+    @cart_items = @customer.cart_items
+    @total = total_price(@cart_items).to_s(:delimited)
+    redirect_to cart_items_path
   end
 
   def destroy
     @cart_item.destroy
+    flash.now[:alert] = "#{@cart_item.item.name}を削除しました"
+    @cart_items = @customer.cart_items
+    @total = total_price(@cart_items).to_s(:delimited)
     redirect_to cart_items_path
-    flash[:info] = 'カートの商品を取り消しました。'
   end
 
   def destroy_all
