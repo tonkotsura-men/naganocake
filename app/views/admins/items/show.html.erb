@@ -7,7 +7,7 @@
 
 	<div class="row">
 		<div class="col-xs-3 col-xs-offset-2">
-	  	<%= attachment_image_tag(@item, :image, size: "320x240", fallback: "no_image.jpg") %>
+	  	<%= attachment_image_tag(@item, :image, size: "240x180", fallback: "no_image.jpg") %>
 		</div>
 
 		<div class="col-xs-5">
@@ -27,7 +27,7 @@
 	  		<tr>
 	  			<!-- 後程税込み価格修正 -->
 	  			<th>税込価格 (税抜価格)</th>
-	  			<th><%= @item.price.to_s(:delimited) %> 円 (<%= @item.price.to_s(:delimited) %> 円)</th>
+	  			<th><%= tax_price(@item.price).to_s(:delimited) %> 円 (<%= @item.price.to_s(:delimited) %> 円)</th>
 	  		</tr>
 	  		<tr>
 	  			<th>販売ステータス</th>
