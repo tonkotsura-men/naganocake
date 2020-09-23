@@ -9,6 +9,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/da6e295665.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -89,6 +90,10 @@
     <br>
     <br>
     <br>
+    <div class="container">
+      <div id="flash">
+        <%= render "layouts/flash" %>
+      </div>
       <%= yield %>
     </div>
     <footer class="footer">© ながのcake</footer>
