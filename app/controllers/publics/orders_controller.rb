@@ -58,7 +58,11 @@ class Publics::OrdersController < ApplicationController
 
   def create
     @order = current_customer.orders.new(order_params)
-    @order.save
+
+    #一時的のため、あとで消す
+    @order.total_payment = 1000 
+   
+    if @order.save  
     flash[:notice] = "ご注文が確定しました。"
     redirect_to orders_complete_path
 
@@ -79,6 +83,9 @@ class Publics::OrdersController < ApplicationController
     end
     # 注文完了後、カート商品を空にする
     @cart_items.destroy_all
+  else
+    render :confirm
+    end 
   end
 
   def order_params
