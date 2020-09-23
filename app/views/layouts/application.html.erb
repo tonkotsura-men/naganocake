@@ -23,7 +23,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <p class="navbar-brand">ながのCake</p>
+      
+        <% if admin_signed_in? %>
+        <%= link_to "ながのCake", admins_top_path %>
+        <% else %>
+        <%= link_to "ながのCake", root_path %>
+        <% end %>
     </div>
     <div class="collapse navbar-collapse" id="navbarEexample1">
       <% if customer_signed_in? %>
