@@ -4,5 +4,6 @@ class Publics::HomesController < ApplicationController
 
   def top
   	@items = Item.all.sample(4)
+	@genres = Genre.where(is_active: true)
   end
 end
