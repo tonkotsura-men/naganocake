@@ -1,4 +1,4 @@
-<script src="https://kit.fontawesome.com/da6e295665.js" crossorigin="anonymous"></script>
+
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-2">
 	  	<h2>商品詳細</h2>
@@ -25,7 +25,6 @@
 	  			<th><%= @item.genre.name %></th>
 	  		</tr>
 	  		<tr>
-	  			<!-- 後程税込み価格修正 -->
 	  			<th>税込価格 (税抜価格)</th>
 	  			<th><%= tax_price(@item.price).to_s(:delimited) %> 円 (<%= @item.price.to_s(:delimited) %> 円)</th>
 	  		</tr>

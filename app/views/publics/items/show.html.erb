@@ -1,6 +1,4 @@
-<script src="https://kit.fontawesome.com/da6e295665.js" crossorigin="anonymous"></script>
 <div class='row'>
-
   <div class="col-xs-2">
     <table class='table table-hover table-bordered'>
       <thead>
@@ -21,6 +19,9 @@
           </tr>
           <% end %>
         <% end %>
+        <tr>
+          <td><%= link_to "⇒ すべての商品を見る", items_path, class: 'dark-blue-letter' %></td>
+        </tr>
       </tbody>
     </table>
     <div class="text-center"><%= paginate(@genres) %></div>
@@ -32,11 +33,8 @@
 
   <div class="col-xs-4">
     <h3><strong><%= @item.name %></strong></h3>
-
-    <p><%= @item.introduction %></p></br>
-    
+    <p><%= @item.introduction %></p></br>    
     <h4>¥ <%= tax_price(@item.price).to_s(:delimited) %>（税込み）</h4></br>
-
     <% if @item.is_active == true %>
       <% if @item.genre.is_active == true %>
         <%= form_with(model: [@item, @cart_item], local: true, url: {controller: 'cart_items', action: 'create'}) do |f| %>

@@ -9,7 +9,7 @@
 
 	Admin.create!(
     email: "admin@example.jp",
-    encrypted_password:  "11111111"
+    password:  "11111111"
   )
 
 9.times do |n|
@@ -20,7 +20,6 @@
       first_name_kana: "タナカ",
       last_name_kana: "タロウ",
       password: "123456#{n + 1}",
-      encrypted_password: "123456#{n + 1}",
       postal_code: "123456#{n + 1}",
       address: "東京都港区台場1-11-#{n + 1}",
       telephone_number: "0901234567#{n + 1}"
