@@ -1,22 +1,22 @@
 <div class="form-group">
-  <%= f.label :"商品名", class: "col-xs-2 col-xs-offset-3 control-label" %>
+  <%= f.label :"商品名", class: "col-xs-3 col-xs-offset-2 control-label" %>
   <%= f.text_field :name, class: "col-xs-7 form-control-static name" %>
 </div>
 </br></br>
 <div class="form-group">
-  <%= f.label :"商品説明", class: "col-xs-2 col-xs-offset-3 control-label" %>
+  <%= f.label :"商品説明", class: "col-xs-3 col-xs-offset-2 control-label" %>
   <%= f.text_area :introduction, class: "col-xs-7 control-label introduction" %>
 </div>
 </br></br>
 <div class="form-group">
-  <%= f.label :"ジャンル", class: "col-xs-2 col-xs-offset-3 control-label" %>
+  <%= f.label :"ジャンル", class: "col-xs-3 col-xs-offset-2 control-label" %>
   <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --") %>
 </div>
 <div class="form-group">
-  <%= f.label :"税抜価格", class: "col-xs-2 col-xs-offset-3 control-label" %>
-  <%= f.text_field :price, class: "col-xs-6" %>円
+  <%= f.label :"税抜価格", class: "col-xs-3 col-xs-offset-2 control-label" %>
+  <%= f.text_field :price, class: "col-xs-3" %>円
 </div>
 <div class="form-group">
-  <%= f.label :"販売ステータス", class: "col-xs-2 col-xs-offset-3 control-label" %>
+  <%= f.label :"販売ステータス", class: "col-xs-3 col-xs-offset-2 control-label" %>
   <%= f.select :is_active, [['販売中', true], ['販売停止', false]], :prompt => "-- 選択してください --" %>
 </div>

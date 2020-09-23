@@ -1,3 +1,18 @@
 // Place all the styles related to the admins::customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.name{
+	margin-right:10px;
+}
+
+.btn-primary{
+	margin-right:10px;
+}
+
+.status {
+  border: solid 1px;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: skyblue;
+}
