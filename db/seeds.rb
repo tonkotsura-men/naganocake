@@ -19,6 +19,7 @@
       last_name: "太郎#{n + 1}",
       first_name_kana: "タナカ",
       last_name_kana: "タロウ",
+      password: "123456#{n + 1}",
       encrypted_password: "123456#{n + 1}",
       postal_code: "12345#{n + 10}",
       address: "東京都港区台場1-11-#{n + 1}",
