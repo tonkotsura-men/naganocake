@@ -4,8 +4,8 @@ class Order < ApplicationRecord
 	has_many :order_details, dependent: :destroy
 
 	#バリデーションの記述
-	validates :customer_id, :address, :name, :shipping_cost,
-			  		:total_payment, :payment_method,
+	validates :address, :name, :shipping_cost,
+			  		:payment_method,
 			  		presence: true
 	validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
 	validates :shipping_cost, :total_payment, numericality: { only_integer: true }

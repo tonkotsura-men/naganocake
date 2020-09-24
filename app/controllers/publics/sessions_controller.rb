@@ -8,8 +8,8 @@ class Publics::SessionsController < Devise::SessionsController
   protected
 
   def reject_customer
-   # binding.pry
-    @customer = Customer.find_by(email: params[:customer][:email].downcase)
+   
+    @customer = Customer.find_by(email: params[:customer][:email])
       if @customer.is_deleted == true
         flash[:alert] = "このアカウントは退会済みです。"
         redirect_to new_customer_session_path

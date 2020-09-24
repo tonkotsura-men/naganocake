@@ -4,6 +4,16 @@
   </div>
 </div>
 
+  <% if @order.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <% if @cart_items.present? %>
   <div class="row">
     <div class="col-xs-9 billing">

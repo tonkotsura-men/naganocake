@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
 	Admin.create!(
     email: "admin@example.jp",
     password:  "11111111"
@@ -24,6 +25,7 @@
       address: "東京都港区台場1-11-#{n + 1}",
       telephone_number: "0901234567#{n + 1}"
     )
+
 end
 
 9.times do |n|
@@ -33,7 +35,10 @@ end
     address: "東京都港区台場1-11-#{n + 1}",
     customer_id: n + 1
   )
+
 end
+
+
 
   Genre.create!(
     id: 1,
@@ -169,6 +174,7 @@ end
       image: open("./app/assets/images/sweets-candy-001.png")
     )
   end
+
 
 
 
