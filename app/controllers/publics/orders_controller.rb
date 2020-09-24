@@ -1,7 +1,6 @@
 class Publics::OrdersController < ApplicationController
   include ApplicationHelper
 
-  before_action :to_confirm, only: [:show]
   before_action :authenticate_customer!
 
   def new
@@ -16,6 +15,8 @@ class Publics::OrdersController < ApplicationController
       payment_method: params[:order][:payment_method]
     )
 
+    # total_paymentに請求額を代入
+    @order.total_payment = billing(@order)
 
     # addressにresidenceの値がはいっていれば
     if params[:order][:addresses] == "residence"
@@ -47,20 +48,27 @@ class Publics::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   def create
     @order = current_customer.orders.new(order_params)
-    @order.save
+
+    #一時的のため、あとで消す
+    @order.total_payment = 1000 
+   
+    if @order.save  
     flash[:notice] = "ご注文が確定しました。"
     redirect_to orders_complete_path
 
     # もし情報入力でnew_addressの場合Addressに保存
     if params[:order][:ship] == "1"
-      current_customer.address.create(address_params)
+      current_customer.addresses.create(address_params)
     end
 
     # カート商品の情報を注文商品に移動
@@ -75,17 +83,17 @@ class Publics::OrdersController < ApplicationController
     end
     # 注文完了後、カート商品を空にする
     @cart_items.destroy_all
+  else
+    render :confirm
+    end 
   end
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :price)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_payment)
   end
 
   def address_params
     params.require(:order).permit(:postal_code, :address, :name)
   end
 
-  def to_confirm
-    redirect_to cart_items_path if params[:id] == "confirm"
-  end
 end
