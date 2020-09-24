@@ -60,7 +60,7 @@ class Publics::RegistrationsController < Devise::RegistrationsController
   protected
   # サインアップ時の遷移先
   def after_sign_up_path_for(resource)
-      items_path
+      top_path
   end
 
   protected

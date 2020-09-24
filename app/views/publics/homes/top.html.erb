@@ -27,9 +27,7 @@
     <div class="text-center"><%= paginate(@genres) %></div>
   </div>
 <div class="col-xs-9 col-xs-offset-1">
-
 	<div class="welcome">
-
 		<div class="wrapper">
 				<p class="title">ようこそ、Naganocakeへ！<br>
 				このサイトは、ケーキの販売のECサイトになります。<br>
@@ -42,9 +40,11 @@
 	<h1>オススメ商品</h1>
 	<% @items.each do |item| %>
 		<div class="col-xs-3">
-			<%= attachment_image_tag item,:image, size: "180x130", fallback: 'no_image.jpg' %></br>
-			<%= item.name %></br>
-			¥<%= item.price.to_s(:delimited) %>
+			<%= link_to item_path(item.id) do %>
+				<%= attachment_image_tag item,:image, size: "180x130", fallback: 'no_image.jpg' %></br>
+				<%= item.name %></br>
+				 ¥<%= tax_price(item.price).to_s(:delimited) %>
+			<% end %>
 		</div>
 	<% end %>
 	<div class="col-xs-12">
