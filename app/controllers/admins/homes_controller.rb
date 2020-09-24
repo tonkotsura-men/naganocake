@@ -4,4 +4,5 @@ def top
 	@orders = Order.where(created_at: today.all_day)
 end
 
+
 end
