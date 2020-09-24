@@ -59,8 +59,8 @@ class Publics::OrdersController < ApplicationController
   def create
     @order = current_customer.orders.new(order_params)
 
-    #一時的のため、あとで消す
-    @order.total_payment = 1000 
+    # total_paymentに請求額を代入
+    @order.total_payment = billing(@order)
    
     if @order.save  
     flash[:notice] = "ご注文が確定しました。"
