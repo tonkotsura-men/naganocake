@@ -30,7 +30,7 @@
   <div class="col-xs-9">
     <h2>
       <span style="display: inline-block;"><%= @item_title %></span>
-      <span style="display: inline-block;">（全<%= @items.count %>件）</span>
+      <span style="display: inline-block;">（全<%= @item_searches.count %>件）</span>
     </h2>
     <% @items.each do |item| %>
       <% if item.genre.is_active == true %>
