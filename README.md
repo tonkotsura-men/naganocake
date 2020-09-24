@@ -1,24 +1,26 @@
-# README
+# 長野CAKE
+DMM WEBCAMPのチーム開発の課題
+ECサイトの開発
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+【概要】
+⻑野県にある⼩さな洋菓⼦店「ながのCAKE」の商品を通販するためのECサイト開発。
 
-Things you may want to cover:
+【案件の背景】
+元々近隣住⺠が顧客だったが、昨年始めたInstagramから⼈気となり、全国から注⽂が来る
+ようになった。
+InstagramのDMやメールで通販の注⽂を受けていたが、情報管理が煩雑になってきたた
+め、管理機能を含んだ通販サイトを開設しようと思い⾄った。
 
-* Ruby version
+【開発環境】
+Ruby on Rails
 
-* System dependencies
+【チーム名】
+とんこつラーメン
 
-* Configuration
+【チームメンバー】
+ごん
+ひろ
+ゆう
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+【作成時期】
+2020/09/12~2020/09/28
