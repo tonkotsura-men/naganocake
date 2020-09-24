@@ -48,6 +48,7 @@
           </ul>
           <p class="navbar-text">ようこそ <%= "#{current_customer.last_name}#{current_customer.first_name}" %> さん。</p>
           <% elsif admin_signed_in? %>
+
           <ul class="nav navbar-nav navbar-right">
           <li class="">
               <%= link_to '商品一覧', admins_items_path, class:"btn btn-light" %>
@@ -64,7 +65,7 @@
             <li class="">
               <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-light" %>
             </li>
-           
+
             <form class="form-inline">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

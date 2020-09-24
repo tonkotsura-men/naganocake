@@ -1,4 +1,5 @@
 class Publics::HomesController < ApplicationController
+	include ApplicationHelper
   def about
   end
 
