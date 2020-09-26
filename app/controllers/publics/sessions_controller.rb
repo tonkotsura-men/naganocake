@@ -38,7 +38,7 @@ class Publics::SessionsController < Devise::SessionsController
   # ログイン時の遷移先
   def after_sign_in_path_for(resource)
     # if current_customer.is_deleted == false
-      items_path
+      top_path
     # else
     #   destroy_customer_session_path
     # end  
