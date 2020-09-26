@@ -23,7 +23,7 @@ class Publics::CustomersController < ApplicationController
   end
 
   def withdraw
-    current_customer.destroy
+    current_customer.update(is_valid: false)
     reset_session
     redirect_to top_path, info: 'ありがとうございました。またのご利用を心よりお待ちしております。'
   end
