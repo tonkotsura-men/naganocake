@@ -73,4 +73,24 @@
     </tbody>
   </table>
   </div>
+  <div class="col-sm-12">
+  <div class="col-sm-4 pull-right">
+      <table class="table table-hover table-bordered table-condensed">
+        <tr>
+          <th class="info">商品合計</th>
+          <td>¥<%= total_price(@order_details).to_s(:delimited) %></td>
+        </tr>
+          <tr>
+            <th class="info">送料</th>
+            <td>¥<%= @order.shipping_cost %></td>
+          <tr>  
+            <th class="info">請求金額合計</th>
+            <td>¥<%= @order.total_payment.to_s(:delimited) %></td>
+          </tr>  
+        </tr>
+      </table>
+    </div>
+    
+    </div>
+  </div>
 </div>    
