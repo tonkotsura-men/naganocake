@@ -30,7 +30,7 @@ class Admins::CustomersController < ApplicationController
    end  
 
    def set_customer
-     @customer = Customer.find(params[:id])
+     @customer = Customer.with_deleted.find(params[:id])
    end
 
 end
