@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
       get 'top' => 'homes#top'
 
+      get 'search' => 'items#seach'
 
       resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
