@@ -2,19 +2,18 @@
 
 class Publics::SessionsController < Devise::SessionsController
 
- before_action :reject_customer, only: [:create]
+ # before_action :reject_customer, only: [:create]
  
 
-  protected
+ #  private
 
-  def reject_customer
-   
-    @customer = Customer.find_by(email: params[:customer][:email])
-      if @customer.is_deleted == true
-        flash[:alert] = "このアカウントは退会済みです。"
-        redirect_to new_customer_session_path
-      end
-  end
+ #  def reject_customer
+ #    @customer = Customer.find_by(email: params[:customer][:email])
+ #      if @customer.is_deleted == true
+ #        flash[:alert] = "このアカウントは退会済みです。"
+ #        redirect_to new_customer_session_path
+ #      end
+ #  end
 
 
 
