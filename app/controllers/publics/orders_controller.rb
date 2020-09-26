@@ -2,6 +2,7 @@ class Publics::OrdersController < ApplicationController
   include ApplicationHelper
 
   before_action :authenticate_customer!
+  before_action :set_cart_items, only: [:confirm, :create]
 
   def new
     @order = Order.new
@@ -9,7 +10,7 @@ class Publics::OrdersController < ApplicationController
   end
 
   def confirm
-    @cart_items = current_customer.cart_items
+    # @cart_items = current_customer.cart_items
     @order = Order.new(
       customer: current_customer,
       payment_method: params[:order][:payment_method]
@@ -72,7 +73,7 @@ class Publics::OrdersController < ApplicationController
     end
 
     # カート商品の情報を注文商品に移動
-    @cart_items = current_customer.cart_items
+    # @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
     OrderDetail.create(
       item_id: cart_item.item_id,
@@ -94,6 +95,10 @@ class Publics::OrdersController < ApplicationController
 
   def address_params
     params.require(:order).permit(:postal_code, :address, :name)
+  end
+
+  def set_cart_items
+    @cart_items = current_customer.cart_items
   end
 
 end
