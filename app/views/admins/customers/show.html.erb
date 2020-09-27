@@ -6,7 +6,7 @@
       <p>
         <i class="col-sm-2">顧客ID</i>　　　
         <%= @customer.id %>
-        <% if @customer.is_valid == true %>
+        <% if @customer.is_valid == false %>
           <i class="status">有効会員</i>
         <% else %>
           <i class="status">退会済</i>
