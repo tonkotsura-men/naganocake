@@ -1,4 +1,5 @@
 class Admins::OrdersController < ApplicationController
+  include ApplicationHelper
 
   before_action :set_order, only: [:show, :update]
 
