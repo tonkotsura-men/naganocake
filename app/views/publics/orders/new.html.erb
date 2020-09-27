@@ -54,7 +54,7 @@
           </div>
 
           <div class="btns col-xs-8 col-xs-offset-1">
-            <%= link_to cart_items_path, class: "glyphicon glyphicon-shopping-cart btn btn-info col-xs-3 cart-back" do %>カート(<%= current_customer.cart_items.count %>)へ戻る
+            <%= link_to cart_items_path, class: "glyphicon glyphicon-shopping-cart btn btn-info col-xs-3 cart-back" do %> カート(<%= current_customer.cart_items.count %>)へ戻る
             <% end %>
             <%= f.submit "確認画面へ進む", class: "btn btn-success col-xs-5 col-xs-offset-1" %>
           </div>
