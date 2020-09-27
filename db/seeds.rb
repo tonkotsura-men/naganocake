@@ -28,15 +28,7 @@
 
 end
 
-9.times do |n|
-  Address.create!(
-    name: "田中　太郎#{n + 1}",
-    postal_code: "123456#{n + 1}",
-    address: "東京都港区台場1-11-#{n + 1}",
-    customer_id: n + 1
-  )
 
-end
 
 
 
