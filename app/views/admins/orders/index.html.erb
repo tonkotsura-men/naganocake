@@ -21,8 +21,7 @@
               <!-- 再読み込みしない場合、turbolinks =>false にすると読みこみができる -->
               <%= link_to admins_order_path(order), class: "btn-link" , data: {"turbolinks"=>false} do %>
                 <i class=""></i>
-                <%= order.customer.last_name %> 
-                <%= order.customer.first_name %>           
+                <%= order.name %>            
               <% end %>
             </td>
             <td class="col-sm-2">

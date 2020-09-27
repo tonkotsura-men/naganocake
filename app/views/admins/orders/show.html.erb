@@ -60,7 +60,7 @@
             <%= order_detail.amount %>
           </td>
           <td class="col-sm-2">
-          	 <%= order_detail.price %>                
+          	 <%= sub_price(order_detail).to_s(:delimited) %>
           </td>
           <td class="col-sm-2">
             <%= form_for(order_detail, url: admins_order_order_detail_path(order_detail), method: :patch) do |f| %>
