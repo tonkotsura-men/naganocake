@@ -36,8 +36,12 @@ class Admins::ItemsController < ApplicationController
     end
   end
 
+  def search
+    @items = Item.search(params[:search])
+  end
+
   private
-  
+
   def item_params
     params.require(:item).permit(:name, :image, :introduction, :genre_id, :price, :is_active)
   end

@@ -1,0 +1,14 @@
+<%= form_tag(search_path, :method => 'get') do %>
+  <%= text_field_tag :search %>
+    <%= submit_tag 'Search' %>
+<% end %>
+<table>
+	<% @items.each do |item| %>
+	<thead>
+	    <tr>
+	        <th></th>
+	        <th><%= link_to item.name, admins_item_path(item) %> </th>
+	    </tr>
+	</thead>
+	<% end %>
+</table>

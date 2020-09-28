@@ -4,25 +4,27 @@ class Publics::CartItemsController < ApplicationController
   before_action :authenticate_customer!
   before_action :set_cart_item, only: [:update, :destroy, :edit]
   before_action :set_customer
+  before_action :set_cart_items, only: [:index, :update, :destroy]
+  before_action :set_total, only: [:update, :destroy]
 
   def index
-    @cart_items = @customer.cart_items
+    # @cart_items = @customer.cart_items
   end
 
   def update
     @cart_item.update(amount: params[:cart_item][:amount].to_i)
     flash.now[:success] = "#{@cart_item.item.name}の数量を変更しました"
     @price = sub_price(@cart_item).to_s(:delimited)
-    @cart_items = @customer.cart_items
-    @total = total_price(@cart_items).to_s(:delimited)
+    # @cart_items = @customer.cart_items
+    # @total = total_price(@cart_items).to_s(:delimited)
     redirect_to cart_items_path
   end
 
   def destroy
     @cart_item.destroy
     flash.now[:alert] = "#{@cart_item.item.name}を削除しました"
-    @cart_items = @customer.cart_items
-    @total = total_price(@cart_items).to_s(:delimited)
+    # @cart_items = @customer.cart_items
+    # @total = total_price(@cart_items).to_s(:delimited)
     redirect_to cart_items_path
   end
 
@@ -64,8 +66,16 @@ class Publics::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
   end
 
+  def set_cart_items
+     @cart_items = @customer.cart_items
+  end
+
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount)
+  end
+
+  def set_total
+    @total = total_price(@cart_items).to_s(:delimited)
   end
 
 end
