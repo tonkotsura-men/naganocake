@@ -16,6 +16,13 @@ class Item < ApplicationRecord
 		cart_items.where(customer_id: customer.id).exists?
 	end
 
+	def Item.search(search)
+		if search
+			Item.where(['name LIKE ?', "%#{search}%"])
+		else
+			Item.none
+		end
+	end
 
 	
 end
